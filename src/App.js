@@ -6,7 +6,7 @@ import './App.css';
 
 const App = () => {
   const [image, setImage] = useState('');
-  const [hashInput, setHashInput] =useState('');
+  const [hashInput, setHashInput] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -30,7 +30,7 @@ const App = () => {
 
   useState(()=>{
     setLoading(true);
-    axios.post('http://165.232.53.236/hash', {
+    axios.post('/hash', {
       hash: sha256(hashInput)
     })
     .then(function (response) {
