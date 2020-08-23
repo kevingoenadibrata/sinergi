@@ -6,7 +6,7 @@ import './App.css';
 
 const App = () => {
   const [image, setImage] = useState('');
-  const [data, setData] = useState({});
+  const [metaData, setMetaData] = useState({});
   const [hashInput, setHashInput] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -21,7 +21,7 @@ const App = () => {
     .then(function (response) {
       console.log(response);
       setImage(response.data.imageData);
-      setData(response.data);
+      setMetaData(response.data);
       setLoading(false);
     })
     .catch(function (error) {
@@ -38,7 +38,7 @@ const App = () => {
     .then(function (response) {
       console.log(response);
       setImage(response.data.imageData);
-      setData(response.data);
+      setMetaData(response.data);
       setLoading(false);
     })
     .catch(function (error) {
@@ -54,7 +54,7 @@ const App = () => {
           <h1>SINERGI</h1>
           <input onChange={handleChange} value={hashInput}></input>
           <button onClick={handleClick}>Generate</button>
-          <p>{data}</p>
+          <p>{metaData.colorInfo}</p>
         </div>
       </div>
       <div className="imgContainer">
