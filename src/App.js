@@ -6,6 +6,7 @@ import './App.css';
 
 const App = () => {
   const [image, setImage] = useState('');
+  const [data, setData] = useState({});
   const [hashInput, setHashInput] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -19,7 +20,8 @@ const App = () => {
     })
     .then(function (response) {
       console.log(response);
-      setImage(response.data);
+      setImage(response.data.imageData);
+      setData(response.data);
       setLoading(false);
     })
     .catch(function (error) {
@@ -35,7 +37,8 @@ const App = () => {
     })
     .then(function (response) {
       console.log(response);
-      setImage(response.data);
+      setImage(response.data.imageData);
+      setData(response.data);
       setLoading(false);
     })
     .catch(function (error) {
@@ -43,6 +46,7 @@ const App = () => {
       setLoading(false);
     });
   },[]);
+
   return (
     <div className="App">
       <div className="infoContainer">
@@ -50,6 +54,7 @@ const App = () => {
           <h1>SINERGI</h1>
           <input onChange={handleChange} value={hashInput}></input>
           <button onClick={handleClick}>Generate</button>
+          <p>{data}</p>
         </div>
       </div>
       <div className="imgContainer">
